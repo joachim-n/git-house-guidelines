@@ -53,7 +53,12 @@ The considerably simplifies the task of checking for divergence before updating 
 git log sites/all/modules/contrib/foobar
 ```
 
-Simply read down the list of commits until you encounter an update commit. Then check all the issues for the patches to see whether they are included in the new release. For patches which are not included, you can try to cherry-pick the patch commit after an update:
+There are two possibilities:
+
+- The first commit is an update or the initial import, in which case everything is fine and you can go ahead and make the new update.
+- There are patch commits before the latest update commit or the initial import.
+
+In the second case, you will need to check all the issues for the patches to see whether they are included in the new release. For patches which are not included, you can try to cherry-pick the patch commit after an update:
 
 ```
 git cherry-pick SHA
