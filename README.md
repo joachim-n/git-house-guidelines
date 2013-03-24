@@ -43,7 +43,7 @@ Any patch applied in our repository to a contrib module should also be uploaded 
 
 * 'Applied patch from http://drupal.org/node/1234567: Fixed evil bug that was causing evil.'
 
-If there are lots of patches, it may be a good idea to specify the link to the actual comment:
+If there are lots of patches on the issue, specify the link to the actual comment:
 
 * 'Applied patch from http://drupal.org/node/1234567#comment-7654321: Fixed evil bug that was causing evil.'
 
