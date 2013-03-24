@@ -47,7 +47,11 @@ If there are lots of patches on the issue, specify the link to the actual commen
 
 * 'Applied patch from http://drupal.org/node/1234567#comment-7654321: Fixed evil bug that was causing evil.'
 
-The considerably simplifies the task of checking for divergence before updating a module to a newer version. The following will give a clear list of all updates and patches applied to a module:
+This considerably simplifies the task of checking for divergence before updating a module to a newer version, and allows use of the following workflow.
+
+#### Contrib module update workflow ####
+
+The following will give a clear list of all updates and patches applied to a module:
 
 ```
 git log sites/all/modules/contrib/foobar
@@ -55,16 +59,17 @@ git log sites/all/modules/contrib/foobar
 
 There are two possibilities:
 
-- The first commit is an update or the initial import, in which case everything is fine and you can go ahead and make the new update.
+- The most recent commit is an update or the initial import, in which case everything is fine and you can go ahead and make the new update.
 - There are patch commits before the latest update commit or the initial import.
 
-In the second case, you will need to check all the issues for the patches to see whether they are included in the new release. For patches which are not included, you can try to cherry-pick the patch commit after an update:
+In the second case, you will need to take the following steps:
 
-```
-git cherry-pick SHA
-```
-
-If that doesn't work, you will need to reroll the patch (and then re-upload it to the issue on drupal.org, and then make a new commit specifying the comment which has your new patch).
+1. Check all the issues for the patches to see whether they are included in the new release. Make a list of the commits whose patches have not been included.
+2. Do ```drush up MODULE``` as normal, and make a commit for the updated module code.
+3. Now re-patch the work through the list of commits. The simplest thing to try first is to cherry-pick the patch commit:
+    
+    ```git cherry-pick SHA```
+4. If that doesn't work, you will need to reroll the patch (and then re-upload it to the issue on drupal.org, and then make a new commit specifying the comment which has your new patch).
 
 ## Branches ##
 
