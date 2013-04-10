@@ -7,6 +7,7 @@ My git house guidelines for Drupal projects I work on.
 
 * Keep commits small and separate.
 * Write clean log messages.
+* Don't hack core!
 
 ## Commit granularity ##
 
