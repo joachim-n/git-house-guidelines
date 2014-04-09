@@ -63,14 +63,15 @@ git log sites/all/modules/contrib/foobar
 There are two possibilities:
 
 - The most recent commit is an update or the initial import, in which case everything is fine and you can go ahead and make the new update.
-- There are patch commits before the latest update commit or the initial import.
+- There are patch commits which are more recent than the latest update commit or the initial import.
 
 In the second case, you will need to take the following steps:
 
-1. Check all the issues for the patches to see whether they are included in the new release. Make a list of the commits whose patches have not been included.
+1. Copy the git log output to a notepad so you have a list of all the commits that are more recent than the last update or import.
+1. Compare with the release notes for the new release. Is the issue that patch was for listed as fixed in the new release? You may also need check the issue for the patch. If the fix is in the new release, you can remote that commit from your list.
 2. Do ```drush up MODULE``` as normal, and make a commit for the updated module code.
-3. Now re-patch the work through the list of commits. The simplest thing to try first is to cherry-pick the patch commit:
-    
+3. Now re-patch the work through the list of commits that remains. The simplest thing to try first is to cherry-pick the patch commit:
+
     ```git cherry-pick SHA```
 4. If that doesn't work, you will need to reroll the patch (and then re-upload it to the issue on drupal.org, and then make a new commit specifying the comment which has your new patch).
 
