@@ -48,6 +48,8 @@ If there are lots of patches on the issue, specify the link to the actual commen
 
 * 'Applied patch from http://drupal.org/node/1234567#comment-7654321: Fixed evil bug that was causing evil.'
 
+(Note that since drupal.org upgraded to Drupal 7, the permalinks on comments do not give the node ID, and should thus NOT be used. Use the link in the 'Files' table in the issue summary instead.)
+
 This considerably simplifies the task of checking for divergence before updating a module to a newer version, and allows use of the following workflow.
 
 #### Contrib module update workflow ####
