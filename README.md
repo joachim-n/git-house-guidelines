@@ -79,7 +79,7 @@ In the second case, you will need to take the following steps:
 
 ### Feature branches ###
 
-Feature branches may be used for a single new feature that requires a lot of commits that don't make sense in isolation, such as a contrib module that requires heavy patching, or changes to Features and their knock-on effects. 
+Feature branches may be used for a single new feature that requires a lot of commits that don't make sense in isolation, such as a contrib module that requires heavy patching, or changes to Features and their knock-on effects.
 
 These should branch off dev and merge back into it (with the --no-ff option so that the branch history is preserved). Dev is then merged into master.
 
@@ -88,36 +88,36 @@ The naming convention for a feature branch is 'feature-ISSUE#-description', wher
 * To create a feature branch:
 
     ```git checkout dev```
-    
+
     ```git checkout -b FEATUREBRANCH```
 * If dev is updated in the meantime, and you want those changes available to the feature branch:
 
     ```git merge dev```
-    
+
     (If you haven't yet pushed the branch at all, you can rebase on dev instead, which produces cleaner history.)
 * To merge into dev when the feature is complete, there are three possible techniques:
     * Merge the feature branch in, preserving it in the history as a separate set of commits:
 
         ```git checkout dev```
-        
+
         ```git merge --no-ff FEATUREBRANCH```
-    
+
         This will usually be the preferred option, and will always be available.
-    
+
     * If the dev branch has has no new commits since the feature branch forked from it, you can allow git to fast-forward the merge. This results in a linear history, as it the commits had been on dev all along:
-    
+
         ```git checkout dev```
-        
+
         ```git merge FEATUREBRANCH```
-    
+
     * The work on the feature branch can be applied as a single commit to the dev branch, using:
-    
+
         ```git merge --squash dev```
-        
-        This means that the dev branch has none of the history of changes and log messages from the feature branch. 
-    
+
+        This means that the dev branch has none of the history of changes and log messages from the feature branch.
+
         This technique is especially useful when working on local feature branches that you never push to the repository, as it allows you to do rough work on the local branch, and the collapse it all into a single commit for public consumption.
-    
+
 ### Hotfix branches ###
 
 Once a project has launched, make a hotfix branch for urgent fixes. These branch off master, and are merged back into *both* master and dev. The naming convention for a hotfix branch is 'hotfix-ISSUE#-description'.
